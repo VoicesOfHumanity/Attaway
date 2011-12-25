@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 9.99
+  recipientName: MyString
+  recipientEmail: MyString
+  senderName: MyString
+  senderEmail: MyString
+  certificateDate: MyString
+  creationDate: 2010-12-21
+
+two:
+  id: 9.99
+  recipientName: MyString
+  recipientEmail: MyString
+  senderName: MyString
+  senderEmail: MyString
+  certificateDate: MyString
+  creationDate: 2010-12-21

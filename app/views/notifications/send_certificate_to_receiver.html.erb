@@ -1,0 +1,11 @@
+<p>The United Religions Initiative is glad to present this Certificate
+sent especially for you <%= @certificate_request.sender_name %>.
+This certificate honors you for your interfaith efforts.  Thank you
+for your valuable contributions.</p>
+
+<% if not @certificate_request.cover_memo.blank? %>
+  <pre><%= @certificate_request.cover_memo %></pre>
+<% end %>
+
+<p>To unsubscribe from Attaway, <a href="<%= @unsubscribe_url %>">click here</a>
+and press the "Unsubscribe" button.</p>

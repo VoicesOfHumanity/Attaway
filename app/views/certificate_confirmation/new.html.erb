@@ -1,0 +1,7 @@
+<h3>Confirmation Request</h3>
+
+<%= form_tag(certificate_confirmation_index_path) do %>
+  <%= hidden_field_tag :code, @code %>
+  <%= submit_tag 'Confirm' %>
+<% end %>
+

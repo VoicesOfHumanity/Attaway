@@ -1,0 +1,35 @@
+<h1>Listing stars</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Recipient Name</th>
+    <th>Recipient Email</th>
+    <th>Sender Name</th>
+    <th>Sender Email</th>
+    <th>Certificate Date</th>
+    <th>Creation Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stars.each do |star| %>
+  <tr>
+    <td><%= star.id %></td>
+    <td><%= star.recipientName %></td>
+    <td><%= star.recipientEmail %></td>
+    <td><%= star.senderName %></td>
+    <td><%= star.senderEmail %></td>
+    <td><%= star.certificateDate %></td>
+    <td><%= star.creationDate %></td>
+    <td><%= link_to 'Show', star %></td>
+    <td><%= link_to 'Edit', edit_star_path(star) %></td>
+    <td><%= link_to 'Destroy', star, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Star', new_star_path %>

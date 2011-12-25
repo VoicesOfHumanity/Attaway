@@ -1,0 +1,23 @@
+<div id="simple_captcha">
+  <div class="label">Human Authentication *</div>
+  <%= simple_captcha_options[:field] %>
+  <%= simple_captcha_options[:image] %>
+  <a id="simple_captcha_reload" href="#">Reload</a>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('#simple_captcha_reload').click(function() {
+    var container = $('#simple_captcha');
+    container.html('loading ...');
+    container.load('<%= new_captcha_path %>', function(response, status, xhr) {
+      if (status == "error") {
+        msg = "An unexpected error has ocurred, please try again later.\n";
+        alert(msg + xhr.status + " " + xhr.statusText);
+      }
+    });
+    return false;
+  });
+});
+</script>
+

@@ -1,0 +1,44 @@
+<%= form_for(@star) do |f| %>
+  <% if @star.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@star.errors.count, "error") %> prohibited this star from being saved:</h2>
+      <ul>
+      <% @star.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field" style='visibility:hidden'>
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label 'Recipient Name' %><br />
+    <%= f.text_field :recipientName %>
+  </div>
+  <div class="field">
+    <%= f.label 'Recipient Email' %><br />
+    <%= f.text_field :recipientEmail %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sender Name' %><br />
+    <%= f.text_field :senderName %>
+  </div>
+  <div class="field">
+    <%= f.label 'Sender Email' %><br />
+    <%= f.text_field :senderEmail %>
+  </div>
+  <div class="field">
+    <%= f.label 'Certificate Date' %><br />
+    <%= f.text_field :certificateDate %>
+  </div>
+  <div class="field"  style='visibility:hidden'>
+    <%= f.label :creationDate %><br />
+    <%= f.date_select :creationDate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

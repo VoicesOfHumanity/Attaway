@@ -1,0 +1,14 @@
+en:
+  simple_captcha:
+    message:
+      default: "Secret ode did not match with the image"
+      user: "The secret image and code were different"
+    label: "Human authentication"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "One problem prevented your request from going through successfully:"
+          other:  "%{count} problems prevented your request from going through successfully:"
+

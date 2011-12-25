@@ -1,0 +1,78 @@
+<%= content_for :help do %>
+<div id="hlp_qm">
+  <img src='/images/help.png' alt='help' />
+  <div id="hlp_info">
+    <p>Add your name and email as the "sender".  You will receive a pdf copy
+    of the certificate so you can see exactly what you are sending.</p>
+
+    <p>If you supply the email address of the recipient, you will be asked to
+    confirm your request.  This prevents misuse and also gives you a chance to
+    review the certificate before it is sent.  Otherwise, you will need to
+    print the certificate and mail it by regular mail to the person being
+    honored.  The receiver will not be automatically subscribed to any email
+    lists.</p>
+
+    <p>The gender of the recipient allows the text of the certificate to say
+    "his" or "hers" instead of an awkward "your".</p>
+
+    <p>The cover memo will be included in the email with the certificate.  If
+    you do not give the email of the recipient, there is no sense filling in
+    the cover memo.</p>
+
+    <p align="right"><a id="hlp_close" href="#">Close</a></p>
+  </div>
+</div>
+<% end %>
+
+<h3>Send URI Interfaith Star</h3>
+
+<%= form_for(@certificate_request, :url => {:action => "create"}) do |f| %>
+  <% if @certificate_request.errors.any? %>
+  <div id="error_explanation">
+  <h2><%= pluralize(@certificate_request.errors.count, "error") %> prohibited this record from being saved:</h2>
+  <ul>
+    <% @certificate_request.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+  </div>
+  <% end %>
+
+  <h2>Sender Options</h2>
+  <p>
+    <div class="label">Sender Name *</div>
+    <%= f.text_field :sender_name %>
+  </p>
+  <p>
+    <div class="label">Sender Email *</div>
+    <%= f.text_field :sender_email %>
+  </p>
+
+  <h2>Receiver Options</h2>
+  <p>
+    <div class="label">Receiver Name *</div>
+    <%= f.text_field :receiver_name %>
+  </p>
+  <p>
+    <div class="label">Receiver Email</div>
+    <%= f.text_field :receiver_email %>
+  </p>
+  <p>
+    <div class="label">Receiver Gender</div>
+    <%= f.select :receiver_gender, options_for_select(GenderValidator::GENDERS, :selected => @certificate_request.receiver_gender), {:include_blank => true} %>
+  </p>
+
+  <h2>Cover memo</h2>
+  <p>
+    <div class="label">&nbsp;</div>
+    <%= f.text_area :cover_memo %>
+  </p>
+
+  <h2>Captcha</h2>
+  <%= render 'simple_captcha/reload_captcha', :target => :certificate_request %>
+
+  <p class="button" align="center">
+    <%= f.submit "Request" %>
+  </p>
+<% end %>
+

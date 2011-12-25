@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @star.id %>
+</p>
+
+<p>
+  <b>Recipientname:</b>
+  <%= @star.recipientName %>
+</p>
+
+<p>
+  <b>Recipientemail:</b>
+  <%= @star.recipientEmail %>
+</p>
+
+<p>
+  <b>Sendername:</b>
+  <%= @star.senderName %>
+</p>
+
+<p>
+  <b>Senderemail:</b>
+  <%= @star.senderEmail %>
+</p>
+
+<p>
+  <b>Certificatedate:</b>
+  <%= @star.certificateDate %>
+</p>
+
+<p>
+  <b>Creationdate:</b>
+  <%= @star.creationDate %>
+</p>
+
+
+<%= link_to 'Edit', edit_star_path(@star) %> |
+<%= link_to 'Back', stars_path %>

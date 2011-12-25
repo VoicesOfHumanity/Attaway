@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>URI Star Certificate</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'jquery', 'jquery.hoverintent', 'application' %>
+  <%= csrf_meta_tag %>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="logo"><img src='/images/logo.png' alt='logo' /></div>
+
+    <%= yield :help %>
+
+    <% if flash[:error].present? %>
+      <%= content_tag :div, flash[:error], :id => "flash_error" %>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+- back button reload
+- flash messages
+- certificate: preview in js
+- do not count the receiver as having been sent a certificate in this month until a certificate is actually sent.
+- 30 días
+- i18n
+
+
+TODO:
+  Client Requests
+    Apply theme to emails
+
+  Refactorings
+    Remover deliver logic from CertificateRequest
+    Confirm/Block Sender/Block Receiver => SecureActionController/SecureActionModel
+    Better captcha, only when you do n requests, block for 1 hour after 3 errors
+    Testing 100% code coverage
+
+  Admin interface
+    /admin/users
+    /admin/blacklist
+    /admin/translations
+    /admin/reports
+
+
+Integration Tests
+  def create_valid_certificate
+    post valid_certificate /
+    message sender_confirm
+    redirect /
+
+  def create_valid_certificate_for_receiver
+    post valid_certificate_for_receiver /
+    message sender_confirm
+    redirect /
+
+  def block_sender
+    post valid_sender_code /block
+    message blocked
+    redirect /
+
+  def block_receiver
+    post valid_receiver_code /block
+    message blocked
+    redirect /
+
+  def confirm
+    post valid_sender_code /confirm
+    message certificate_sent
+    redirect /
+
+  send certificate with wrong data
+    post wrong_certificate /
+    message invalid_data
+
+  send certificate with valid data and wrong captcha
+    post valid_certificate /
+    message invalid_captcha
+
+  send certificate to sender
+    create_valid_certificate
+
+  send certificate to sender then block sender
+    create_valid_certificate
+    block_sender
+
+  send certificate to receiver then confirm
+    create_valid_certificate_for_receiver
+    confirm
+
+  send certificate to receiver then block sender
+    create_valid_certificate_for_receiver
+    confirm
+    block_receiver(:this_should_report_expired_code)
+
+  send certificate to receiver then block receiver
+    create_valid_certificate_for_receiver
+    confirm
+    block_receiver
+
